@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrición - Reserva tu Consulta</title>
+    <script src="https://kit.fontawesome.com/087fa2cc75.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #ff7f50;
+            --secondary-color: #ffa07a;
+            --text-color: #4a4a4a;
+            --background-color: #fff5e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            background-image: url('/placeholder.svg?height=1080&width=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .overlay {
+            background-color: rgba(255, 245, 230, 0.8);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: rgba(255, 127, 80, 0.9);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .reservation-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 40px auto;
+        }
+
+        .reservation-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: block;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .benefits {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .benefit-item {
+            flex-basis: calc(33.333% - 20px);
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-item i {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .benefit-item {
+                flex-basis: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="overlay">
+        <header>
+            <nav class="container">
+                <div class="logo">Nutrición</div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#reserva">Reserva</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+            <div class="hero" id="inicio">
+                <h1>Transforma tu vida con una alimentación saludable</h1>
+                <p>Descubre cómo una nutrición equilibrada puede mejorar tu salud, energía y bienestar. Reserva tu consulta hoy y da el primer paso hacia una vida más saludable.</p>
+                <a href="#reserva" class="cta-button">Reserva tu Consulta</a>
+            </div>
+
+            <div class="benefits">
+                <div class="benefit-item">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Plan Personalizado</h3>
+                    <p>Creamos un plan nutricional adaptado a tus necesidades y objetivos específicos.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Mejora tu Salud</h3>
+                    <p>Optimiza tu salud y previene enfermedades con una alimentación adecuada.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-dumbbell"></i>
+                    <h3>Aumenta tu Energía</h3>
+                    <p>Siente más vitalidad y energía en tu día a día con los alimentos correctos.</p>
+                </div>
+            </div>
+
+            <div id="reserva" class="reservation-form form-group">
+                <h2>Reserva tu Consulta</h2>
+                <form id="appointment-form" action="https://formspree.io/f/meooenbv"
+                method="POST">
+                        <label for="lname">Nombre completo:</label>
+                        <input type="text" id="lname" name="lname" required>
+                        <label for="lemail">Correo electrónico:</label>
+                        <input type="email" id="lemail" name="lemail" required>
+                        <label for="phone">Teléfono:</label>
+                        <input type="tel" id="phone" name="phone" required>
+                        <label for="date">Fecha de consulta:</label>
+                        <input type="date" id="date" name="date" required>
+                        <label for="time">Hora de consulta:</label>
+                        <input type="time" id="date" name="date" required>
+                        <br>
+                        <br>
+                    <button type="submit" class="submit-button">Reservar Consulta</button>
+                </form>
+            </div>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 DLDigital. Todos los derechos reservados.</p>
+            </div>
+            <div id="contacto">
+                <a href="https://wa.link/14ocjm" target="_blank"><i class="fa-brands fa-square-whatsapp fa-bounce" style="color: #ffffff; height:10vh" aria-hidden="true"></i></a> 
+                <a href="https://www.facebook.com/DLDigital.SanJusto/" target="_blank"><i class="fa-brands fa-tiktok fa-bounce" style="color: #ffffff; height:10vh" aria-hidden="true"></i></a> 
+                <a href="https://www.instagram.com/d.l.digital/" target="_blank"><i class="fa-brands fa-square-instagram fa-bounce" style="color: #ffffff; height:10vh" aria-hidden="true"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('appointment-form').addEventListener('submit', function(e) {
+            //e.preventDefault();
+            //const formData = new FormData(this);
+            //const appointmentDetails = Object.fromEntries(formData);
+            
+            // Here you would typically send this data to a server
+            //console.log('Appointment details:', appointmentDetails);
+
+            // Show a confirmation message
+            alert('¡Gracias por reservar tu consulta! Te contactaremos pronto para confirmar los detalles.');
+            this.reset();
+        });
+
+        // Add animation to benefits on scroll
+        const benefitItems = document.querySelectorAll('.benefit-item');
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        benefitItems.forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
