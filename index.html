@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrición - Reserva tu Consulta</title>
+    <title>Nutrición - LandingPage</title>
     <script src="https://kit.fontawesome.com/087fa2cc75.js" crossorigin="anonymous"></script>
     <style>
         :root {
@@ -231,6 +231,53 @@
             .benefit-item {
                 flex-basis: 100%;
             }
+
+            .reservation-form {
+                padding: 20px;
+                max-width: 90%;
+            }
+
+            .hero {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px 10px;
+            }
+
+            .logo {
+                font-size: 1.5em;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 0.9em;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            .form-group label {
+                font-size: 0.9em;
+            }
+
+            .form-group input,
+            .form-group select {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+
+            .submit-button {
+                font-size: 0.9em;
+                padding: 10px 20px;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -274,18 +321,20 @@
 
             <div id="reserva" class="reservation-form form-group">
                 <h2>Reserva tu Consulta</h2>
-                <form id="appointment-form" action="https://formspree.io/f/meooenbv"
+                <form id="appointment-form" action="https://formspree.io/f/mrbblvol"
                 method="POST">
-                        <label for="lname">Nombre completo:</label>
-                        <input type="text" id="lname" name="lname" required>
-                        <label for="lemail">Correo electrónico:</label>
-                        <input type="email" id="lemail" name="lemail" required>
-                        <label for="phone">Teléfono:</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <label for="name">Nombre completo:</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="tel">Teléfono:</label>
+                        <input type="tel" id="tel" name="tel" required>
                         <label for="date">Fecha de consulta:</label>
                         <input type="date" id="date" name="date" required>
                         <label for="time">Hora de consulta:</label>
                         <input type="time" id="date" name="date" required>
+                        <label for="mensaje" id="mensaje" name="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje"></textarea>
                         <br>
                         <br>
                     <button type="submit" class="submit-button">Reservar Consulta</button>
